@@ -88,7 +88,7 @@ if result.startswith("```json"):
 
 result_data = json.loads(result)
 
-print(f'\n\033[36mRemote quick command answer:\033[0m \n\n{result_data}')
+print(f'\n\033[36mRemote quick command result:\033[0m \n\n{result_data}')
 
 save_output('result', result_data)
 
