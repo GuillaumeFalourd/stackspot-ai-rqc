@@ -84,7 +84,7 @@ execution_status = get_execution_status(execution_id, access_token)
 answer_str = execution_status['steps'][0]['step_result']['answer'][7:-3].replace('\\n', '\n').replace('\\"', '"')
 answer_data = json.loads(answer_str)
 
-print(f'\n\033[36mRemote quick command answer:\033[0m {answer_data}')
+print(f'\n\033[36mRemote quick command answer:\033[0m \n\n{answer_data}')
 
 save_output('answer', answer_data)
 
