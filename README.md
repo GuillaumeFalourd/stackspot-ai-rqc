@@ -12,7 +12,7 @@ _Note: This action is supported on all operating systems._
 
 For this action to work, be sure you configured your [Remote Quick Command prompt on StackSpot AI](https://ai.stackspot.com/docs/pt-br/quick-commands/create-remote-qc) with a JSON object as output.
 
-**Example (cf test pipelines abaove):**
+**Example (cf test pipelines above):**
 
 _Check security vulnerabilities describe the vulnerabilities and fix the selected code {{input_data}}_
 

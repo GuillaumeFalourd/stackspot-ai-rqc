@@ -83,10 +83,13 @@ execution_status = get_execution_status(execution_id, access_token)
 # Extract the 'answer' field from the step_result
 answer_str = execution_status['steps'][0]['step_result']['answer']
 
+result = execution_status['result']
+
+print(f'Result: {result}')
+
+
 # Remove the leading and trailing ```json and ``` for correct JSON parsing
 if answer_str.startswith("```json"):
-    # Remove the leading ```json and the trailing ```
-    # This assumes the format is exactly as provided, with newlines as shown
     answer_str = answer_str[7:-4].strip()
 
 answer_data = json.loads(answer_str)
