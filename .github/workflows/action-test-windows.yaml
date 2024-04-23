@@ -1,0 +1,39 @@
+name: Action Test Windows
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rqc:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save test data
+        id: input_data
+        run: |
+          # Read the content of the Python script into a variable
+          TEST=$(<test.py)
+          
+          # Use printf to safely handle multi-line strings and special characters
+          printf '%s\n' "$TEST"
+          
+          # Use printf to append the content to the $GITHUB_OUTPUT, properly handling multi-line strings
+          printf 'test<<EOF\n%s\nEOF\n' "$TEST" >> $GITHUB_OUTPUT
+        shell: /usr/bin/bash -e {0}
+
+      - uses: GuillaumeFalourd/stackspot-ai-rqc@main
+        id: rqc
+        with:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
+          CLIENT_REALM: stackspot
+          QC_SLUG: sast-rqc-v0
+          INPUT_DATA: ${{ steps.input_data.outputs.test }}
+      
+      - name: Check Remote Quick Command answer
+        run: echo ${{ toJSON(steps.rqc.outputs.rqc_answer) }}
