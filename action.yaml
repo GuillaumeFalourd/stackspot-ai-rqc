@@ -20,9 +20,9 @@ inputs:
     required: true
 
 outputs:
-  rqc_answer:
+  rqc_result:
     description: "Remote Quick Command answer"
-    value: ${{ steps.rqc.outputs.answer }}
+    value: ${{ steps.rqc.outputs.result }}
 
 runs:
   using: "composite"

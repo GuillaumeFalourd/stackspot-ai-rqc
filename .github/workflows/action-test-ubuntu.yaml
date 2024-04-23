@@ -36,4 +36,4 @@ jobs:
           INPUT_DATA: ${{ steps.input_data.outputs.test }}
       
       - name: Check Remote Quick Command answer
-        run: echo ${{ toJSON(steps.rqc.outputs.rqc_answer) }}
+        run: echo ${{ toJSON(steps.rqc.outputs.rqc_result) }}

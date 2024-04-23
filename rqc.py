@@ -80,23 +80,16 @@ access_token = get_access_token(ACCOUNT_SLUG, CLIENT_ID, CLIENT_KEY)
 execution_id = create_rqc_execution(QC_SLUG, access_token, INPUT_DATA)
 execution_status = get_execution_status(execution_id, access_token)
 
-print(f'Execution Status: {execution_status}')
-
-# Extract the 'answer' field from the step_result
-answer_str = execution_status['steps'][0]['step_result']['answer']
-
 result = execution_status['result']
 
-print(f'Result: {result}')
-
 # Remove the leading and trailing ```json and ``` for correct JSON parsing
-if answer_str.startswith("```json"):
-    answer_str = answer_str[7:-4].strip()
+if result.startswith("```json"):
+    result = result[7:-4].strip()
 
-answer_data = json.loads(answer_str)
+result_data = json.loads(result)
 
-print(f'\n\033[36mRemote quick command answer:\033[0m \n\n{answer_data}')
+print(f'\n\033[36mRemote quick command answer:\033[0m \n\n{result_data}')
 
-save_output('answer', answer_data)
+save_output('result', result_data)
 
 print('\n\033[36mOutput saved successfully!\033[0m')
