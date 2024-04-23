@@ -40,7 +40,7 @@ Field | Mandatory | Default Value | Observation
 **CLIENT_KEY** | YES | N/A |[StackSpot](https://stackspot.com/en/settings/access-token) Client KEY.
 **CLIENT_REALM** | YES | N/A |[StackSpot](https://stackspot.com/en/settings/access-token) Client Realm.
 **QC_SLUG** | YES | N/A | [StackSpot Remote Quick Command reference](https://ai.stackspot.com/docs/pt-br/quick-commands/create-remote-qc)
-**INPUT_DATA** | YES | N/A | Input data that will be received and analyze bu the remote quick command
+**INPUT_DATA** | YES | N/A | Data that will be received and analyzed by the remote quick command
 
 ## ▶️ Action Output
 
