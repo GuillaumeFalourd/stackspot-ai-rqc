@@ -19,12 +19,13 @@ inputs:
     description: Remote Quick Command input data
     required: true
 
+outputs:
+  rqc_answer:
+    description: "Remote Quick Command answer"
+    value: ${{ steps.rqc.outputs.answer }}
+
 runs:
   using: "composite"
-  outputs:
-    rqc_answer:
-      description: "RUN TASK LIST"
-      value: ${{ steps.rqc.outputs.answer }}
   steps:
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
