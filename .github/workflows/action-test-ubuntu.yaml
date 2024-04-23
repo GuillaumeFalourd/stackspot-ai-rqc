@@ -33,7 +33,7 @@ jobs:
           CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
           CLIENT_REALM: stackspot
           QC_SLUG: sast-rqc
-          YOUR_DATA: ${{ steps.input_data.outputs.test }}
+          INPUT_DATA: ${{ steps.input_data.outputs.test }}
       
-      - name: Check Remote Quick Command output
+      - name: Check Remote Quick Command answer
         run: echo ${{ steps.rqc.outputs.rqc_answer }}
