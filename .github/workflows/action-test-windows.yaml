@@ -37,3 +37,4 @@ jobs:
       
       - name: Check Remote Quick Command answer
         run: echo ${{ toJSON(steps.rqc.outputs.rqc_answer) }}
+        shell: bash
