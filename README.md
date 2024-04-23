@@ -24,10 +24,10 @@ steps:
         CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
         CLIENT_REALM: ${{ secrets.CLIENT_REALM }}
         QC_SLUG: YOUR_REMOTE_QUICK_COMMAND_SLUG
-        INPUT_DATA: ${{ steps.input_data.outputs.test }}
+        INPUT_DATA: ${{ steps.input_data.outputs.<OUTPUT_NAME> }}
 
     - name: Check Remote Quick Command answer
-      run: echo ${{ steps.rqc.outputs.rqc_answer }}
+      run: echo ${{ toJSON(steps.rqc.outputs.rqc_answer) }}
 ```
 
 ## ▶️ Action Inputs
@@ -44,4 +44,4 @@ Field | Mandatory | Default Value | Observation
 
 Field | Observation
 ------------  | -------------
-**rqc_answer** | Can be accessed by using `${{ steps.<STEP_ID>.outputs.rqc_answer }}`
+**rqc_answer** | Can be accessed by using `${{ toJSON(steps.rqc.outputs.rqc_answer) }}`
