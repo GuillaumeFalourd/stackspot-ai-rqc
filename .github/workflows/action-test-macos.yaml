@@ -24,7 +24,7 @@ jobs:
           
           # Use printf to append the content to the $GITHUB_OUTPUT, properly handling multi-line strings
           printf 'test<<EOF\n%s\nEOF\n' "$TEST" >> $GITHUB_OUTPUT
-        shell: /usr/bin/bash -e {0}
+        shell: bash
 
       - uses: GuillaumeFalourd/stackspot-ai-rqc@main
         id: rqc
