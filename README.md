@@ -8,7 +8,32 @@ This action forwards an `input_data` to a [StackSpot AI remote quick command](ht
 
 _Note: This action is supported on all operating systems._
 
-## Usage
+## ⚠️ Prompt configuration (mandatory requirement)
+
+For this action to work, be sure you configured your [Remote Quick Command prompt on StackSpot AI](https://ai.stackspot.com/docs/pt-br/quick-commands/create-remote-qc) with a JSON object as output.
+
+**Example (cf test pipelines abaove):**
+
+_Check security vulnerabilities describe the vulnerabilities and fix the selected code {{input_data}}_
+
+_Your answer should just be following the JSON structure below:_
+```
+[
+  {
+    "title": "<TITLE>",
+    "severiity": "<SEVERITY>",
+    "correction": "<CORRECTION>"
+  }
+]
+```
+
+_Where the "title" would be a string resuming the vulnerability in 15 words maximum._
+
+_Where the "severity" would be a string representing the impact of the vulnerability, using critical, high, medium or low._
+
+_Where the "correction" would be a code suggestion to resolve the issue identified._
+
+## 📚 Usage
 
 ```yaml
 steps:
@@ -47,3 +72,11 @@ Field | Mandatory | Default Value | Observation
 Field | Observation
 ------------  | -------------
 **rqc_answer** | Can be accessed by using `${{ toJSON(steps.rqc.outputs.rqc_answer) }}`
+
+## 🤝 Contributing
+
+☞ [Guidelines](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/blob/main/CONTRIBUTING.md)
+
+## 🏅 Licensed
+
+☞ This repository uses the [Apache License 2.0](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/blob/main/LICENSE)
