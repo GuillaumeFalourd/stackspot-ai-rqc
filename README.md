@@ -44,7 +44,7 @@ steps:
       run: |
        # something to generate an $input_data
 
-    - uses: GuillaumeFalourd/stackspot-ai-rqc@main
+    - uses: GuillaumeFalourd/stackspot-ai-rqc@v1
       id: rqc
       with:
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
