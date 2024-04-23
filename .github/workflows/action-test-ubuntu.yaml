@@ -1,0 +1,30 @@
+name: Action Test Ubuntu
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save test data
+        id: input_data
+        run: echo "test=$(cat test.py)" >> $GITHUB_OUTPUT
+
+      - uses: GuillaumeFalourd/stackspot-ai-rqc@main
+        id: rqc
+        with:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_KEY: ${{ secrets.CLIENT_KEY }}
+          CLIENT_REALM: stackspot
+          QC_SLUG: sast-rqc
+          YOUR_DATA: ${{ steps.input_data.outputs.test }}
+      
+      - name: Check Remote Quick Command output
+        run: echo ${{ steps.rqc.outputs.rqc_answer }}
