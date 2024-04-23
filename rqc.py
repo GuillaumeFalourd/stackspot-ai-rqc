@@ -80,6 +80,8 @@ access_token = get_access_token(ACCOUNT_SLUG, CLIENT_ID, CLIENT_KEY)
 execution_id = create_rqc_execution(QC_SLUG, access_token, INPUT_DATA)
 execution_status = get_execution_status(execution_id, access_token)
 
+print(f'Execution Status: {execution_status}')
+
 # Extract the 'answer' field from the step_result
 answer_str = execution_status['steps'][0]['step_result']['answer']
 
