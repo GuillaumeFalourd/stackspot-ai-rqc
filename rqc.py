@@ -69,7 +69,7 @@ def get_execution_status(execution_id, access_token):
             time.sleep(5)  # Wait for 5 seconds before polling again
 
 # Replace the placeholders with your actual data
-CLIENT_ID =  os.getenv("CLIENT_ID")
+CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_KEY = os.getenv("CLIENT_KEY")
 ACCOUNT_SLUG = os.getenv("CLIENT_REALM")
 QC_SLUG = os.getenv("QC_SLUG")
@@ -80,8 +80,12 @@ access_token = get_access_token(ACCOUNT_SLUG, CLIENT_ID, CLIENT_KEY)
 execution_id = create_rqc_execution(QC_SLUG, access_token, INPUT_DATA)
 execution_status = get_execution_status(execution_id, access_token)
 
-# Extract the 'answer' field from the step_result (note: removing the leading and trailing ```json and ``` for correct JSON parsing)
-answer_str = execution_status['steps'][0]['step_result']['answer'][7:-3].replace('\\n', '\n').replace('\\"', '"')
+# Extract the 'answer' field from the step_result
+answer_str = execution_status['steps'][0]['step_result']['answer']
+
+# Remove the leading and trailing ```json and ``` for correct JSON parsing
+answer_str = answer_str.strip('`')[4:].strip()
+
 answer_data = json.loads(answer_str)
 
 print(f'\n\033[36mRemote quick command answer:\033[0m \n\n{answer_data}')
