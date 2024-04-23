@@ -27,7 +27,7 @@ steps:
         INPUT_DATA: ${{ steps.input_data.outputs.test }}
 
     - name: Check Remote Quick Command answer
-      run: echo ${{ steps.rqc.outputs.rqc_answer }}
+      run: echo ${{ toJSON(steps.rqc.outputs.rqc_answer) }}
 ```
 
 ## ▶️ Action Inputs
@@ -44,4 +44,4 @@ Field | Mandatory | Default Value | Observation
 
 Field | Observation
 ------------  | -------------
-**rqc_answer** | Can be accessed by using `${{ steps.<STEP_ID>.outputs.rqc_answer }}`
+**rqc_answer** | Can be accessed by using `${{ toJSON(steps.rqc.outputs.rqc_answer) }}`
