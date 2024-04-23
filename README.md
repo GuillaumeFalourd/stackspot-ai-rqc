@@ -1,5 +1,7 @@
 # stackspot-ai-rqc
 
+[![Action Test Ubuntu](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/actions/workflows/action-test-ubuntu.yaml/badge.svg)](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/actions/workflows/action-test-ubuntu.yaml) [![Action Test MacOS](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/actions/workflows/action-test-macos.yaml/badge.svg)](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/actions/workflows/action-test-macos.yaml) [![Action Test Windows](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/actions/workflows/action-test-windows.yaml/badge.svg)](https://github.com/GuillaumeFalourd/stackspot-ai-rqc/actions/workflows/action-test-windows.yaml)
+
 StackSpot AI Remote Quick Command Action
 
 This action forwards an `input_data` to a [StackSpot AI remote quick command](https://ai.stackspot.com/docs/pt-br/quick-commands/create-remote-qc) and returns a JSON as answer (github action output) to be manipulated in future steps for customizable operations.
