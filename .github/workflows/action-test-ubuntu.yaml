@@ -15,7 +15,9 @@ jobs:
 
       - name: Save test data
         id: input_data
-        run: echo "test=$(cat test.py)" >> $GITHUB_OUTPUT
+        run: |
+          printf "test=$(cat test.py)" >> $GITHUB_OUTPUT
+        shell: python
 
       - uses: GuillaumeFalourd/stackspot-ai-rqc@main
         id: rqc
