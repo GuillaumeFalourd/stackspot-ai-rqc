@@ -1,6 +1,6 @@
-name: 'Runtime Manager Action'
+name: 'StackSpot AI Remote Quick Command Action'
 
-description: 'Runtime Manager Action'
+description: 'StackSpot AI Remote Quick Command Action'
 
 inputs:
   CLIENT_ID:
