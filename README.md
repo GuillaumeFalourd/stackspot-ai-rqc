@@ -21,7 +21,7 @@ _Your answer should just be following the JSON structure below:_
 [
   {
     "title": "<TITLE>",
-    "severiity": "<SEVERITY>",
+    "severity": "<SEVERITY>",
     "correction": "<CORRECTION>"
   }
 ]
