@@ -86,10 +86,11 @@ result = execution_status['result']
 if result.startswith("```json"):
     result = result[7:-4].strip()
 
-result_data = json.loads(result)
-
-print(f'\n\033[36mRemote quick command result:\033[0m \n\n{result_data}')
-
-save_output('result', result_data)
-
-print('\n\033[36mOutput saved successfully!\033[0m')
+try:
+    result_data = json.loads(result)
+    print(f'\n\033[36mRemote quick command result:\033[0m \n\n{result_data}')
+    save_output('result', result_data)
+    print('\n\033[36mOutput saved successfully!\033[0m')
+except json.JSONDecodeError as e:
+    print(f'\n\033[31mFailed to parse JSON result:\033[0m {e}')
+    print(f'\n\033[31mRaw result:\033[0m \n\n{result}')
